@@ -3,30 +3,25 @@
 This library management system is designed to help librarians effectively manage books, patrons, and transactions. It provides a user-friendly interface for performing various library operations.
 
 ## Specifications
-1. Book Management
-The system allows librarians to add, remove, and update books.
-Each book has attributes such as ISBN, title, author, genre, and availability status.
-Specialized types of books, such as FictionBook and NonFictionBook, can be created using inheritance.
-Relationships between books and other entities (authors, genres) are modeled using composition.
+1. **Book Management**
 
-3.  Patron Management
-Librarians can register patrons with attributes like ID, name, contact information, and borrowing history.
-Specialized types of patrons, such as StudentPatron and FacultyPatron, can be created with specific privileges or restrictions using inheritance.
+    This system allows librarians to add a variety of books. Each book has attributes such as ISBN, title, author, genre, and availability status. Specialized types of books, such as FictionBook and NonFictionBook, are automatically created and sorted along with lists of specific book authors or genres.
 
-5. Transaction Management
-The system manages transactions representing borrowing transactions between patrons and books.
-Transactions are associated with specific books and patrons using composition.
-Encapsulation is applied to maintain transaction data integrity and ensure consistency.
+2.  **Patron Management**
 
-7. Library Management
-The Library class manages overall library operations, including adding/removing books, registering patrons, and handling transactions.
-Abstraction is utilized to define high-level methods and interfaces for library operations, hiding implementation details.
-Polymorphism allows flexible handling of various types of library objects (books, patrons, transactions) through common interfaces.
+    Librarians can register patrons with attributes like ID, name, contact information, and borrowing history. Specialized types of patrons, such as StudentPatron and FacultyPatron, can be created with privileges or restrictions by simply applying during registration using inheritance.
 
-9. User Interface
-The system provides a user interface (console-based) for librarians to interact with.
-Functionalities include adding books, registering patrons, checking out books, and returning books.
-Abstraction is used to separate user interface logic from the underlying business logic of the system.
+3. **Transaction Management**
+
+    This system manages transactions representing borrowing transactions between patrons and books. Transactions are associated with specific books and patrons using composition and encapsulation is applied to maintain transaction data integrity and ensure consistency.
+
+4. **Library Management**
+
+    The Library class manages overall library operations, including adding books, registering patrons, handling transactions, and applying simple search features. Polymorphism allows flexible handling of various library objects (books, patrons, transactions) through common interfaces while hiding implementation details.
+
+9. **User Interface**
+ 
+    Finally, this system provides a user interface (console-based) for librarians to interact with. Functionalities include adding books, registering patrons, checking out books, and returning books. Abstraction is used to separate user interface logic from the underlying business logic of the system, allowing only necessary data to be shown.
 
 ## Example Interaction
 ```
