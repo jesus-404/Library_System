@@ -5,9 +5,9 @@ import java.util.Map;
 
 interface LibraryOperations {
     void addBook(Book book);
-    void removeBook(String isbn);
+    //void removeBook(String isbn);
     void addPatron(String name, String contactInfo);
-    void removePatron(int id);
+    //void removePatron(int id);
 }
 
 public class Library implements LibraryOperations {
@@ -42,20 +42,20 @@ public class Library implements LibraryOperations {
         books.put(book.getIsbn(), book);
     }
 
-    // Remove book from the library
-    public void removeBook(String isbn) {
-        books.remove(isbn);
-    }
-
     // Add patron to the library
     public void addPatron(String name, String contactInfo) {
         patrons.put(patronIdCounter, new Patron(patronIdCounter, name, contactInfo));
         System.out.println("Your Patron ID is: " + patronIdCounter++);
     }
 
-    // Remove patron from the library
-    public void removePatron(int id) {
-        patrons.remove(id);
+    public void addStudentPatron(String name, String contactInfo, int studentId) {
+        studentPatrons.put(patronIdCounter, new StudentPatron(patronIdCounter, name, contactInfo, studentId));
+        addPatron(name, contactInfo);
+    }
+
+    public void addFacultyPatron(String name, String contactInfo, int facultyId) {
+        facultyPatrons.put(patronIdCounter, new FacultyPatron(patronIdCounter, name, contactInfo, facultyId));
+        addPatron(name, contactInfo);
     }
 
     // Borrow book
@@ -67,8 +67,7 @@ public class Library implements LibraryOperations {
         transactions.add(transaction);
         book.setAvailability(false);
         patron.addBookToHistory(book);
-        System.out.println("Book \"" + book.getTitle() + "\"" +
-                " has been borrowed by patron \"" + patron.getName() + "\"");
+        System.out.println("The book, " + book.getTitle() + ", has been returned by patron, " + patron.getName());
         System.out.println("Your Transaction ID is: " + transactionIdCounter++);
     }
 
@@ -80,8 +79,7 @@ public class Library implements LibraryOperations {
 
         transaction.markAsReturned();
         book.setAvailability(true);
-        System.out.println("Book \"" + book.getTitle() + "\"" +
-                " has been returned by patron \"" + patron.getName() + "\"");
+        System.out.println("The book, " + book.getTitle() + ", has been returned by patron, " + patron.getName());
     }
 
     public Author findAuthorByName(String name) {
@@ -108,16 +106,6 @@ public class Library implements LibraryOperations {
 
     public void addGenre(String genre) {
         genres.add(new Genre(genre));
-    }
-
-    public void addStudentPatron(String name, String contactInfo, int studentId) {
-        studentPatrons.put(patronIdCounter, new StudentPatron(patronIdCounter, name, contactInfo, studentId));
-        addPatron(name, contactInfo);
-    }
-
-    public void addFacultyPatron(String name, String contactInfo, int facultyId) {
-        facultyPatrons.put(patronIdCounter, new FacultyPatron(patronIdCounter, name, contactInfo, facultyId));
-        addPatron(name, contactInfo);
     }
 
     public Patron findPatronById(int id) {

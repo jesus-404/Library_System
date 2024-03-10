@@ -10,7 +10,8 @@ public class LibraryUI {
     }
 
     public void displayMenu() {
-        System.out.println("Welcome to the Library Management System!");
+        System.out.println("Welcome to the Library Management System!\n");
+        System.out.println("Select an Option:");
         System.out.println("1. Add Book");
         System.out.println("2. Register Patron");
         System.out.println("3. Check Out Book");
@@ -49,7 +50,9 @@ public class LibraryUI {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
-        scanner.close();}
+        scanner.close();
+        System.exit(0);
+    }
 
     private int getIntInput() {
         while (!scanner.hasNextInt()) {
@@ -83,7 +86,7 @@ public class LibraryUI {
             library.findGenreByName(genre).addBook(book);
         }
 
-        System.out.println("Book added successfully!\n");
+        System.out.println("The book was added successfully!\n");
         handleUserInput();
     }
 
@@ -107,7 +110,7 @@ public class LibraryUI {
             library.addPatron(name, contactInfo);
         }
 
-        System.out.println("Patron registered successfully!\n");
+        System.out.println("Patron was registered successfully!\n");
         handleUserInput();
     }
 
@@ -129,7 +132,7 @@ public class LibraryUI {
         }
 
         library.borrowBook(patronId, isbn);
-        System.out.println("Book checked out successfully!\n");
+        System.out.println("The book was checked out successfully!\n");
         handleUserInput();
     }
 
@@ -150,7 +153,7 @@ public class LibraryUI {
         }
 
         library.returnBook(transactionId);
-        System.out.println("Book returned successfully!\n");
+        System.out.println("The book was returned successfully!\n");
         handleUserInput();
     }
 }
